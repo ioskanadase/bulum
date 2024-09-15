@@ -13,6 +13,19 @@ import os
 import random
 import re
 import sys
+from keep_alive import keep_alive
+import websockets
+from loguru import logger
+from flask import Flask
+# Flask application
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return "Hello World!"
+
+def run_flask():
+    app.run(debug=True)
 
 class Blum:
     def __init__(self) -> None:
@@ -659,6 +672,7 @@ class Blum:
                 continue
 
 if __name__ == '__main__':
+    keep_alive()
     try:
         init(autoreset=True)
         blum = Blum()
